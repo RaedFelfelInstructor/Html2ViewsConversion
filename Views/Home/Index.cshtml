@@ -5,17 +5,7 @@
 
 <partial name="_FeaturedProductsPartial" model="Model.FeaturedProducts" />
 
-<!-- Updated Special Offers Banner -->
-<section class="container my-5">
-    <div class="card bg-danger text-white rounded">
-        <div class="card-body p-5 text-center">
-            <h1 class="display-1 fw-bold mb-4">Special Offers</h1>
-            <h2 class="card-title">Limited Time Offer</h2>
-            <p class="card-text">Get up to 70% off on selected items. Hurry, limited stock available!</p>
-            <a asp-controller="Products" asp-action="Index" asp-route-category="sale" class="btn btn-light mt-2">Shop the Sale</a>
-        </div>
-    </div>
-</section>
+<partial name="_SpecialOffersPartial" model="Model.SpecialOffer" />
 
 <!-- Updated Testimonials -->
 <section class="container my-5">

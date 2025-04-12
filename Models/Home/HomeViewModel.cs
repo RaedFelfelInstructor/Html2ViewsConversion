@@ -6,5 +6,7 @@
         public IEnumerable<ProductViewModel> FeaturedProducts { get; set; }
         public IEnumerable<ProductViewModel> NewArrivals { get; set; }
 
+        public SpecialOfferViewModel? SpecialOffer { get; set; }
+
     }
 }
