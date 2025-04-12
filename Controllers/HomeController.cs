@@ -135,6 +135,15 @@ namespace Html2ViewsConversion.Controllers
                         ImageUrl = "https://placehold.co/300x300/f0f0f0/333333?text=Coffee+Maker",
                         Category = "Home & Kitchen"
                     }
+                },
+
+                SpecialOffer = new SpecialOfferViewModel
+                {
+                    Title = "Special Offers",
+                    SubTitle = "Limited Time Offer",
+                    Description = "Get up to 70% off on selected items, limited stock available!",
+                    ButtonText = "Shop the Sale",
+                    Category = "sale"
                 }
             };
             return View(homeVieModel);
