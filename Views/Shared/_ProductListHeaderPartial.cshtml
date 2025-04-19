@@ -1,5 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Html2ViewsConversion.Models.Products
+@model ProductListViewModel;
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@Model.Title</h1>
+    <a asp-controller="Products" asp-action="Edit" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>Add New Product
+    </a>
+</div>
