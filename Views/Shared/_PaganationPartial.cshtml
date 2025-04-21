@@ -1,8 +1,8 @@
 ﻿@using Html2ViewsConversion.Models.Products
 @model PaginationInfo;
 @{
-    var prevDisabled = !Model.HasPreviousPage ? "disbled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disable" : "";
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
     var prevTabIndex = !Model.HasPreviousPage ? "-1" : null;
     var nextTabIndex = !Model.HasNextPage ? "-1" : null;
 }
@@ -12,11 +12,11 @@
 
         <li class="page-item @prevDisabled">
             <a class="page-link" asp-controller="Products" asp-action="index"
-            asp-rout-page ="@(Model.CurrentPage - 1)"
-            asp-rout-categoryId="@Context.Request.Query["categoryId"]"
-            asp-rout-status="@Context.Request.Query["status"]"
-            asp-rout-searchTerm="@Context.Request.Query["searchTerm"]"
-            asp-rout-pageSize="@Context.Request.Query["pageSize"]"
+            asp-route-page ="@(Model.CurrentPage - 1)"
+            asp-route-categoryId="@Context.Request.Query["categoryId"]"
+            asp-route-status="@Context.Request.Query["status"]"
+            asp-route-searchTerm="@Context.Request.Query["searchTerm"]"
+            asp-route-pageSize="@Context.Request.Query["pageSize"]"
             aria-label="Previous" tabindex="@prevTabIndex">
                 <span aria-hidden="true">&laquo;</span>
             </a>
@@ -36,13 +36,13 @@
 
         @for(int i = startPage; i <= endPage; i++)
         {
-            <li class="page-item @nextDisabled">
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
                 <a class="page-link" asp-controller="Products" asp-action="index"
-                   asp-rout-page="@i"
-                   asp-rout-categoryId="@Context.Request.Query["categoryId"]"
-                   asp-rout-status="@Context.Request.Query["status"]"
-                   asp-rout-searchTerm="@Context.Request.Query["searchTerm"]"
-                   asp-rout-pageSize="@Context.Request.Query["pageSize"]"
+                   asp-route-page="@i"
+                   asp-route-categoryId="@Context.Request.Query["categoryId"]"
+                   asp-route-status="@Context.Request.Query["status"]"
+                   asp-route-searchTerm="@Context.Request.Query["searchTerm"]"
+                   asp-route-pageSize="@Context.Request.Query["pageSize"]"
                    aria-label="Previous">
                    @i
                 </a>
@@ -51,13 +51,13 @@
 
         <li class="page-item @nextDisabled">
             <a class="page-link" asp-controller="Products" asp-action="index"
-               asp-rout-page="@(Model.CurrentPage + 1)"
-               asp-rout-categoryId="@Context.Request.Query["categoryId"]"
-               asp-rout-status="@Context.Request.Query["status"]"
-               asp-rout-searchTerm="@Context.Request.Query["searchTerm"]"
-               asp-rout-pageSize="@Context.Request.Query["pageSize"]"
+               asp-route-page="@(Model.CurrentPage + 1)"
+               asp-route-categoryId="@Context.Request.Query["categoryId"]"
+               asp-route-status="@Context.Request.Query["status"]"
+               asp-route-searchTerm="@Context.Request.Query["searchTerm"]"
+               asp-route-pageSize="@Context.Request.Query["pageSize"]"
                aria-label="Next" tabindex="@nextTabIndex">
-                <span aria-hidden="true">&laquo;</span>
+                <span aria-hidden="true">&raquo;</span>
             </a>
         </li>
     </ul>
