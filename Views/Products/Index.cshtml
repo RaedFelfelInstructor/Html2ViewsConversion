@@ -63,6 +63,18 @@
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
+
+            const deleteModal = document.getElementById('deleteModal');
+            console.log("****", deleteModal);
+            if (deleteModal) {
+                deleteModal.addEventListener('show.bs.modal', function (event) {
+                    const itemDeleteButton = event.relatedTarget;
+                    console.log("****", itemDeleteButton);
+                    const productId = itemDeleteButton.getAttribute('data-id');
+                    console.log("****", productId);
+                    document.getElementById('productIdToDelete').value = productId;
+                });
+            };
         });
 
         // Function to handle status toggles
