@@ -43,13 +43,13 @@
         </a>
         <button class="btn btn-sm @(Model.IsFeatured ? "btn-success" : "btn-outline-succss")" 
             data-bs-toggle="tooltip" title="Toggle Featured"
-            onclick="toggleStatus(@Model.Id, 'sale')">
+                onclick="toggleStatus(@Model.Id, 'featured')">
             <i class="fas fa-star"></i>
         </button>
 
         <button class="btn btn-sm @(Model.IsOnSale ? "btn-danger" : "btn-outline-danger")" 
             data-bs-toggle="tooltip" title="Toggle Sale"
-                onclick="toggleStatus(@Model.Id, 'active')">
+                onclick="toggleStatus(@Model.Id, 'sale')">
             <i class="fas fa-tag"></i>
         </button>
 

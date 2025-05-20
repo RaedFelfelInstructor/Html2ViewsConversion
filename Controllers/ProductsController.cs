@@ -242,5 +242,33 @@ namespace Html2ViewsConversion.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult ToggleStatus(int id, string status)
+        {
+            var product = _products.FirstOrDefault(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            switch (status.ToLower())
+            {
+                case "active":
+                    product.IsActive = !product.IsActive;
+                    break;
+                case "featured":
+                    product.IsFeatured = !product.IsFeatured;
+                    break;
+                case "sale":
+                    product.IsOnSale = !product.IsOnSale;
+                    break;
+                default:
+                    return BadRequest("Invalid status");
+            }
+
+            return PartialView("_ProductItemPartial", product);
+        }
     }
 }
