@@ -1,12 +1,13 @@
 using Html2ViewsConversion.Database;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Html2ViewsConversion
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,22 @@ namespace Html2ViewsConversion
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            // seed data
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var env = services.GetRequiredService<IHostEnvironment>();
+
+                try
+                {
+                    await DbInitializer.InizializeAsync(services, env);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
             app.Run();
         }
     }
